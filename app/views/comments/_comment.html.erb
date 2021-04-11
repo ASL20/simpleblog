@@ -1,0 +1,13 @@
+<div class="mb-3 border-bottom">
+  <p><%= comment.body %></p>
+  <p>
+    <%= render partial: 'users/user', object: comment.user %>
+    <em class="ml-2"><%= l comment.created_at, format: :short %></em>
+    <% if current_user_can_edit?(comment) %>
+      <%= link_to(
+        fa_icon('trash'), post_comment_path(comment.post, comment),
+        method: :delete, data: {confirm: t('destroy_confirm')}
+        ) %>
+    <% end %>
+  </p>
+</div>

@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   # Юзер может иметь много постов
   has_many :posts
+  has_many :comments, dependent: :destroy
 
   # У юзера должно быть имя не длиннее 35 букв
   validates :username, presence: true, length: { maximum: 35 }

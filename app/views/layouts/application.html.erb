@@ -12,7 +12,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-expand navbar-default navbar-static-top border-bottom">
       <div class="container">
         <%= link_to 'SimpleBlog', root_path, class: 'navbar-brand text-secondary' %>
@@ -33,18 +32,15 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 mt-4">
-        </div>
         <div class="col-lg-8 mt-4">
           <%= bootstrap_flash %>
-
           <%= yield %>
         </div>
-        <div class="col-lg-2 mt-4">
+        <div class="col-lg-4">
         </div><!--/span-->
       </div><!--/row-->
 
-      <footer>
+      <footer class="mt-4">
         <p>&copy; <%= t('app.company') %> 2021</p>
       </footer>
     </div> <!-- /container -->

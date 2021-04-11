@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="border rounded bg-light">
+    <div class="border rounded bg-light mb-4">
       <div class="m-3">
         <div class="row">
           <div class="ml-3">
@@ -24,14 +24,13 @@
     </div>
   </div>
 </div>
-  <br>
 
 <div class="row">
-      <% if @user.posts.any? %>
-        <div class="col-md-12">
-          <%= render partial: 'posts/post', collection: @user.posts.order(created_at: :desc) %>
-        </div>
-      <% else %>
-        <p class="buffer-top">Пользователь пока ничего не запостил</p>
-      <% end %>
+  <div class="col-md-12">
+    <% if @user.posts.any? %>
+      <%= render partial: 'posts/post', collection: @user.posts.order(created_at: :desc) %>
+    <% else %>
+      <p>Пользователь пока ничего не запостил</p>
+    <% end %>
+  </div>
 </div>

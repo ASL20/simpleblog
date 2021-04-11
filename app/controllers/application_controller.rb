@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   # Вспомогательный метод, возвращает true, если текущий залогиненный юзер
   # может править указанный пост
   def current_user_can_edit?(model)
-    user_signed_in? && model.user == current_user
+    user_signed_in? == current_user ||
+    (model.try(:post).present? && model.post.user == current_user)
   end
 end

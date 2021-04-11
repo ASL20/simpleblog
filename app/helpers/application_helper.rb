@@ -4,6 +4,10 @@ module ApplicationHelper
     asset_pack_path('media/images/user.png')
   end
 
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "bi bi-#{icon_class}"
+  end
+
   # Выводит flash-сообщение необходимого типа
   def bootstrap_flash(opts = {})
     flash.each do |msg_type, message|
