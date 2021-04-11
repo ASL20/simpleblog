@@ -20,11 +20,11 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-              <li><%= link_to 'Профиль', current_user, class: "nav-link text-secondary ms-3" %></li>
-              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "nav-link text-secondary ms-3" %></li>
+              <li><%= link_to 'Профиль', current_user, class: "nav-link text-secondary ml-3" %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "nav-link text-secondary ml-3" %></li>
             <% else %>
-              <li><%= link_to 'Войти', new_user_session_path, class: "nav-link text-secondary ms-3" %></li>
-              <li><%= link_to 'Зарегистрироватьcя', new_user_registration_path, class: "nav-link text-secondary ms-3" %></li>
+              <li><%= link_to 'Войти', new_user_session_path, class: "nav-link text-secondary ml-3" %></li>
+              <li><%= link_to 'Зарегистрироватьcя', new_user_registration_path, class: "nav-link text-secondary ml-3" %></li>
             <% end %>
           </ul>
         </div>
