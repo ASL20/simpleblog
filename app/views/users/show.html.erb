@@ -1,4 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="border rounded bg-light">
+      <div class="m-3">
+        <div class="row">
+          <div class="ml-3">
+            <%= image_tag user_avatar(@user), class: 'img-thumbnail' %>
+            <% if @user == current_user %>
+              <div class="text-center">
+                <%= link_to 'Новый пост', new_post_path, class: 'btn btn-success mt-3' %>
+              </div>
+            <% end %>
+          </div>
+          <div class="ml-3">
+            <h1><%= @user.username %></h1>
+            <% if @user == current_user %>
+              <div>
+                <%= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <br>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+      <% if @user.posts.any? %>
+        <div class="col-md-12">
+          <%= render partial: 'posts/post', collection: @user.posts.order(created_at: :desc) %>
+        </div>
+      <% else %>
+        <p class="buffer-top">Пользователь пока ничего не запостил</p>
+      <% end %>
+</div>

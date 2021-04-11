@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simpleblog</title>
+    <title>SimpleBlog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,41 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="navbar navbar-expand navbar-default navbar-static-top border-bottom">
+      <div class="container">
+        <%= link_to 'SimpleBlog', root_path, class: 'navbar-brand text-secondary' %>
+
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li><%= link_to 'Профиль', current_user, class: "nav-link text-secondary ms-3" %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "nav-link text-secondary ms-3" %></li>
+            <% else %>
+              <li><%= link_to 'Войти', new_user_session_path, class: "nav-link text-secondary ms-3" %></li>
+              <li><%= link_to 'Зарегистрироватьcя', new_user_registration_path, class: "nav-link text-secondary ms-3" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 mt-4">
+        </div>
+        <div class="col-lg-8 mt-4">
+          <%= bootstrap_flash %>
+
+          <%= yield %>
+        </div>
+        <div class="col-lg-2 mt-4">
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <footer>
+        <p>&copy; <%= t('app.company') %> 2021</p>
+      </footer>
+    </div> <!-- /container -->
   </body>
 </html>

@@ -1,4 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 border">
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <div class="my-3 mx-1">
+    <div class="row">
+      <div class="col-md-9">
+        <h2><%= link_to @post.title, post_path(@post), class: 'link' %></h2>
+      </div>
+      <div class="col-md-3 text-right">
+        <p>
+          <%= @post.created_at.strftime("%H:%M %d.%m.%Y") %>
+        </p>
+      </div>
+    </div>
+    <div>
+      <p><%= @post.content %></p>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <% if current_user_can_edit?(@post) %>
+          <%= link_to 'Изменить', edit_post_path(@post), class: 'btn btn-primary' %>
+          <%= link_to "Удалить", post_path(@post), data: { confirm: t('are_you_sure') }, method: :delete, class: 'btn btn-danger ms-2' %>
+        <% end %>
+      </div>
+      <div class="col-md-6 text-right">
+        <p><%= link_to "Автор: #{@post.user.username}", @post.user, class: 'badge badge-secondary' %></p>
+      </div>
+    </div>
+    <div>
+      <%= link_to "На главную", root_path, class: 'btn btn-link mt-3' %>
+    </div>
+  </div>
+</div>

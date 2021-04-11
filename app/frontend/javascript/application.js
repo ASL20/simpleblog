@@ -1,8 +1,6 @@
 require("@rails/ujs").start()
-require('jquery')
-import 'bootstrap/dist/js/bootstrap'
-
-
+import * as bootstrap from 'bootstrap'
+import "bootstrap-icons/font/bootstrap-icons"
 
 import '../styles/application'
 const images = require.context('../images', true)

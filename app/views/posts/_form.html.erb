@@ -1,17 +1,18 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for @post do |form| %>
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'partials/form_errors', locals: { model: @post } %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control', rows: '10' %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Сохранить', class: 'btn btn-primary' %> или <%= link_to 'вернуться', :back %>
   </div>
 <% end %>
